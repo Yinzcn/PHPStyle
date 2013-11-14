@@ -13,19 +13,20 @@
 
 ### 列出 App 分类数据
 
-- 地址
+- **地址**
 > http://`<应用地址>`/Pcwebservice/`apptype`
 
-- POST 参数说明
+- **参数**
 > 暂无，直接请求即可。
 
-- JSON 返回说明
+- **返回**
 > - `Result` - 值为 *true* 表示正确返回数据；
 > - `Data` - 数据集合。字段定义如下：
 >  - `id` 为分类 id，对应其他接口的 Type 参数
 >  - `name` 为分类名称
 >  - `pid` 为上级分类。
-```
+
+```json
 {
     "Result": true,
     "Data": [
@@ -50,7 +51,6 @@
 > - `NumData` - 返回数据的个数。
 > - `Data` - Data 为数据集合。
 
-- **样例**
 ```json
 {
     "Result": true,
@@ -65,10 +65,10 @@
 
 ### 获取 App 列表（1推荐，2好评，3装机必备，4最新，5热门）
 
-- 地址
+- **地址**
 > http://`应用地址`/Pcwebservice/`applist`
 
-- POST 参数说明
+- **参数**
 > - `Type` - 分类，int 型。0 默认为不限分类。具体可通过 apptype 方法获取具体分类。
 > - `Ptype` - 父分类，1 为应用，2 为游戏，默认为 1 应用。
 > - `Dev` - 设备类型，1 为 iPhone，2 为 iPad，默认为 1。
@@ -76,14 +76,15 @@
 > - `PageSize` - 分页大小。即每次获取多少个数据。
 > - `Page` - 获取第几页数据。从 1 开始。
 
-- JSON 返回
+- **返回**
 > - `Result` 值为 *true* 表示正确返回数据。
 > - `Total` 符合条件的数据总数，
 > - `NumData` 本次返回数据数量，
 > - `PageSize` 本次分页大小；
 > - `CurPage` 当前页面；
 > - `Data` 为数据集合。
-```
+
+```json
 {
     "Result": true,
     "Total": 8677,
@@ -100,10 +101,10 @@
 
 ### 获取 App 排行 (1周排行榜，2月排行榜，3.总排行榜)
 
-- 地址
+- **地址**
 > http://`应用地址`/Pcwebservice/`ranking`
 
-- POST 参数
+- **参数**
 > - `Type` - 分类。默认为不限分类。可通过 `apptype` 方法获取具体分类信息。
 > - `Ptype` - 父分类：1 为应用，2 为游戏，默认为应用。
 > - `Dev` - 设备类型：1 为 iPhone，2 为 iPad，默认为 1。
@@ -111,13 +112,14 @@
 > - `PageSize` - 分页大小。即每次获取多少个数据。默认为 24。
 > - `Page` - 获取第几页数据。
 
-- JSON 返回
+- **返回**
 > - `Result` 值为 *true* 表示正确返回数据；
 > - `Total` 符合条件的数据总数；
 > - `NumData` 本次返回数据数量；
 > - `PageSize` 本次分页大小；
 > - `CurPage` 当前页面；
 > - `Data` 为数据集合。
+
 ```json
 {
     "Result": true,
@@ -138,17 +140,18 @@
 
 ### 相关应用推荐
 
-- 地址
+- **地址**
 > http://`应用地址`/Pcwebservice/`related`
 
-- POST 参数
+- **POST 参数**
 > - `AppId` - 指定关联的 AppId。
 
-- JSON 返回
+- **JSON 返回**
 > - `Result` 值为 *true* 表示正确返回数据。
 > - `AppId` 为请求时指定的 Id 相同。
 > - `NumData` 返回数据个数。目前固定返回 8 个。
 > - `Data` 数据格式与获取 App 列表接口相同。
+
 ```json
 {
     "Result": true,
@@ -161,21 +164,22 @@
 
 ### 获取意见反馈数据
 
-- 地址
+- **地址**
 > http://`应用地址`/Pcwebservice/`suggest_get`
 
-- POST 参数
+- **POST 参数**
 > - `PageSize` - 分页大小。即每次获取多少个数据。默认为 24。
 > - `Page` - 获取第几页数据。
 
-- JSON 返回
+- **JSON 返回**
 > - `Result` 值为 *true* 表示正确返回数据；
 > - `Total` 符合条件的数据总数；
 > - `NumData` 本次返回数据数量；
 > - `PageSize` 本次分页大小；
 > - `CurPage` 当前页面；
 > - `Data` 为数据集合。
-```
+
+```json
 {
     "Result": true,
     "Total": 30,
@@ -189,18 +193,19 @@
 
 ### 提交意见反馈数据
 
-- 地址
+- **地址**
 > http://`应用地址`/Pcwebservice/`suggest_put`
 
-- POST 参数
+- **POST 参数**
 > - `Title` - 标题。
 > - `Content` - 内容正文。
 > - `Username` - 用户名。
 > - `Email` - 邮件地址。
 
-- JSON 返回
+- **JSON 返回**
 > - `Result` - 值为 *true* 表示提交成功，*false* 或者其他情况表示提交失败。
-```
+
+```json
 {
     "Result": true
 }
@@ -209,30 +214,27 @@
 
 ### App 搜索接口
 
-- 地址
+- **地址**
 > http://`应用地址`/Pcwebservice/`search`
 
-- POST 参数
+- **POST 参数**
 > - `Type` - 分类，int 型。0 默认为不限分类。具体可通过 `apptype` 方法获取具体分类。
 > - `Ptype` - 父分类，1为应用，2为游戏，默认为应用；
 > - `Dev` - 设备类型，1为iPhone，2为iPad，默认为1；
 > - `Keyword` - 搜索关键词
 
-- JSON 返回
+- **JSON 返回**
 > - `Result` 值为 *true* 表示正确返回数据。
 > - `Total` 搜索结果的总数，
 > - `Data` 为搜索结果的 id 数组。
-```
+
+```json
 {
-　　    "Result": true,
-　　    "Total": "33",
-　　    "Type": "0",
-　　    "Ptype": "0",
-　　    "Dev": "0",
-　　    "Data": [
-　　        "438",
-　　        "597",
-　　        ...
-　　    ]
+    "Result": true,
+    "Total": "33",
+    "Type": "0",
+    "Ptype": "0",
+    "Dev": "0",
+    "Data": [ "438", "597", ... ]
 }
 ```
